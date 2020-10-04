@@ -9,6 +9,19 @@ router.get('/', function (req, res, next) {
   });
 });
 
+router.get('/all', function (req, res) {
+  maria.query(sql, function (err, rows) {
+    if (err) {
+      console.log('error: ', err.message);
+      res.send(err);
+    } else {
+      res.render('../views/part/all.ejs', {
+        data: rows
+      });
+    }
+  })
+});
+
 router.get('/temp_c', function (req, res) {
   maria.query(sql, function (err, rows) {
     if (err) {
@@ -28,7 +41,7 @@ router.get('/temp_f', function (req, res) {
       console.log('error: ', err.message);
       res.send(err);
     } else {
-      res.render('index', {
+      res.render('../views/part/temp_f.ejs', {
         data: rows
       });
     }
@@ -41,7 +54,7 @@ router.get('/humid', function (req, res) {
       console.log('error: ', err.message);
       res.send(err);
     } else {
-      res.render('index', {
+      res.render('../views/part/humid.ejs', {
         data: rows
       });
     }

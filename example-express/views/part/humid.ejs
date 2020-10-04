@@ -1,0 +1,14 @@
+<table id="data-table" border="1">
+    <tr>
+        <th>센서ID</th>
+        <th>습도</th>
+        <th>날짜 및 시간</th>
+    </tr>
+    <% data.forEach(function(row, index){ %>
+    <tr>
+        <td><%= row.sensor %></td>
+        <td><%= row.humidity %></td>
+        <td><%= row.collect_time %></td>
+    </tr>
+    <% }); %>
+</table>
