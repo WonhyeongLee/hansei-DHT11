@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>DHT11 7주차 실습</title>
+  <title><% data %></title>
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 
@@ -20,25 +20,6 @@
   <input type="button" value="TEMP_F" onClick="location.href='http://127.0.0.1:3000/temp_f'">
   <input type="button" value="HUMID" onClick="location.href='http://127.0.0.1:3000/humid'">
   <p></p>
-  <%= data %>
-
-  <!-- <table id="data-table" border="1">
-    <tr>
-      <th>센서ID</th>
-      <th>값</th>
-      <th>습도</th>
-      <th>날짜 및 시간</th>
-    </tr>
-      <% data.forEach(function(row, index){ %>
-            <tr>
-                <td><%= row.sensor %></td>
-                <td><%= row.temp_c %></td>
-                <td><%= row.humidity %></td>
-                <td><%= row.collect_time %></td>
-            </tr>
-   <% }); %>
-  </table> -->
-  <% include ./part/temp_c.ejs %>
 
 </body>
 
