@@ -20,8 +20,9 @@
   <input type="button" value="TEMP_F" onClick="location.href='http://127.0.0.1:3000/temp_f'">
   <input type="button" value="HUMID" onClick="location.href='http://127.0.0.1:3000/humid'">
   <p></p>
+  <%= data %>
 
-  <table id="data-table" border="1">
+  <!-- <table id="data-table" border="1">
     <tr>
       <th>센서ID</th>
       <th>값</th>
@@ -36,7 +37,9 @@
                 <td><%= row.collect_time %></td>
             </tr>
    <% }); %>
-  </table>
+  </table> -->
+  <% include ./part/temp_c.ejs %>
+
 </body>
 
 </html>
