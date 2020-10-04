@@ -1,17 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
-var mysql = require('mysql');
-var connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'raspi_user',
-  password: '1q2w3e4r',
-  database: 'raspi_dht11'
-})
-
-connection.connect();
-
-
+const maria = require('../maria');
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('index', {
@@ -20,21 +9,16 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/temp_c', function (req, res, next) {
-  var data = 'SELECT * FROM collect_data ORDER BY time DESC LIMIT 50';
-  connection.query(data, function (err, rows) {
+  maria.query('select * from collect_data', function (err, rows, fields) {
     if (error) {
       console.log('error: ', error.message);
     } else {
-      res.send(ejs.render('index', {
-        data: 'success'
-      }))
-
+      res.render('index', {
+        data: '성공'
+      });
+      res.send(rows);
     }
   })
-
-  res.render('index', {
-    data: 'btn1'
-  });
 
 });
 
