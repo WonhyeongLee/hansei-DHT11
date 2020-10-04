@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>DHT11 7주차 실습</title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+
+<body>
+  <h1> DHT11 센서데이터 실습 페이지</h1>
+  <p></p>
+
+  <div id="node-red">
+    <button>Node-RED 링크</button>
+  </div>
+  <h1>온 습도 정보</h1>
+  <input type="button" value="ALL" onClick="location.href='http://127.0.0.1:3000/'">
+  <input type="button" value="TEMP_C" onClick="location.href='http://127.0.0.1:3000/temp_c'">
+  <input type="button" value="TEMP_F" onClick="location.href='http://127.0.0.1:3000/temp_f'">
+  <input type="button" value="HUMID" onClick="location.href='http://127.0.0.1:3000/humid'">
+  <p><%= data %></p>
+
+  <p></p>
+
+  <table id="data-table" border="1">
+    <tr>
+      <th>센서ID</th>
+      <th>값</th>
+      <th>습도</th>
+      <th>날짜 및 시간</th>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+</body>
+
+</html>
