@@ -19,8 +19,6 @@
   <input type="button" value="TEMP_C" onClick="location.href='http://127.0.0.1:3000/temp_c'">
   <input type="button" value="TEMP_F" onClick="location.href='http://127.0.0.1:3000/temp_f'">
   <input type="button" value="HUMID" onClick="location.href='http://127.0.0.1:3000/humid'">
-  <p><%= data %></p>
-
   <p></p>
 
   <table id="data-table" border="1">
@@ -30,12 +28,14 @@
       <th>습도</th>
       <th>날짜 및 시간</th>
     </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
+      <% data.forEach(function(row, index){ %>
+            <tr>
+                <td><%= row.sensor %></td>
+                <td><%= row.temp_c %></td>
+                <td><%= row.humidity %></td>
+                <td><%= row.collect_time %></td>
+            </tr>
+   <% }); %>
   </table>
 </body>
 

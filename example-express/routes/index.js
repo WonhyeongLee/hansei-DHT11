@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var maria = require('../maria');
+var sql ='SELECT * FROM collect_data ORDER BY collect_time DESC LIMIT 10';
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('index', {
@@ -8,28 +9,44 @@ router.get('/', function (req, res, next) {
   });
 });
 
-router.get('/temp_c', function (req, res, next) {
-  maria.query('select * from collect_data', function (err, rows, fields) {
-    if (error) {
-      console.log('error: ', error.message);
+router.get('/temp_c', function (req, res) {
+  maria.query(sql, function (err, rows) {
+    if (err) {
+      console.log('error: ', err.message);
+      res.send(err);
     } else {
-      res.render('index', {
-        data: '성공'
-      });
-      res.send(rows);
+      res.render('index',{
+          data:rows
+        });
+   }
+ })
+});
+
+router.get('/temp_f', function (req, res) {
+    maria.query(sql, function (err, rows) {
+    if (err) {
+      console.log('error: ', err.message);
+      res.send(err);
+    } else {
+      res.render('index',{
+          data:rows
+        });
     }
   })
-
 });
 
-router.get('/temp_f', function (req, res, next) {
-
-
-
-});
-
-router.get('/humid', function (req, res, next) {
-
+router.get('/humid', function (req, res) {
+     maria.query(sql, function (err, rows) {
+    if (err) {
+      console.log('error: ', err.message);
+      res.send(err);
+    } else {
+      res.render('index',{
+          data:rows
+        });
+   }
+ })
+   
 
 });
 
